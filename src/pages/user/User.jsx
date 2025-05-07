@@ -25,7 +25,7 @@ export const User = () => {
           
             try{
                 //const response = await axios.get(`${API_URL}/pacientes`);
-               const response = await axios.get('http://localhost:5000/pacientes');
+               const response = await axios.get('http://localhost:5000/api/pacientes');
                 setUser(response.data)
                
             }
@@ -45,7 +45,7 @@ export const User = () => {
     };
 
     const filterUsers = user.filter(patiente => 
-      patiente.nome.toLowerCase().includes(searchTerm.toLowerCase())
+      patiente.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     //remove
@@ -104,10 +104,10 @@ export const User = () => {
                       <TableCard
                         key={data.id}
                         id={data.id}
-                        nome={data.nome}
-                        email={data.email}
-                        idade={data.idade}
-                        telefone={data.telefone}
+                        nome={data.name}
+                        email={data.mail}
+                        idade={data.age}
+                        telefone={data.phone}
                         onRemove = {()=> handleRemoveUser(data.id)}
                         onEdit = {()=> handleEditUser(data.id)} // data.id
                       />

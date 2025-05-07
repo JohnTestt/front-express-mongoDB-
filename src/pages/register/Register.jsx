@@ -13,51 +13,64 @@ import { FormContainer, SaveButton } from "./style/style";
 export const Register = () => {
 
     const navigate = useNavigate();
-    const API_URL = import.meta.env.VITE_API_URL;
+   // const API_URL = import.meta.env.VITE_API_URL;
 
 
     const [openSnackBar, setOpenSnackbar] = useState(false);
-    const [openMessageSnackBar, setMessageSnackBar] = useState('');
+    //const [openMessageSnackBar, setMessageSnackBar] = useState('');
+
+    const handleOpenSnackbar = () => {
+      setOpenSnackbar(true);
+    };
+  
+    const handleCloseSnackbar = () => {
+      setOpenSnackbar(false);
+    };
+  
+   
 
     const validationSchema = Yup.object({
-        nome: Yup.string().required("O nome é obrigatório."),
-        email: Yup.string().email("E-mail inválido.").required("O e-mail é obrigatório."),
-        idade: Yup.number()
+        name: Yup.string().required("O nome é obrigatório."),
+        mail: Yup.string().email("E-mail inválido.").required("O e-mail é obrigatório."),
+        age: Yup.number()
           .required("A idade é obrigatória.")
           .positive("A idade deve ser um número positivo.")
           .integer("A idade deve ser um número inteiro."),
-          telefone: Yup.string()
+          phone: Yup.string()
           .required("O telefone é obrigatório.")
           .matches(
             /^\(\d{2}\)\s\d{4,5}-\d{4}$/,
             "O telefone deve estar no formato (XX) XXXXX-XXXX")
       });
 
-    const messagerSnackBar = (message) => {
+    // const messagerSnackBar = (message) => {
        
-        setOpenSnackbar(true)
-        setMessageSnackBar(message)
+    //     setOpenSnackbar(true)
+    //     setMessageSnackBar(message)
 
-        setTimeout(() => {
+    //     setTimeout(() => {
            
-            setOpenSnackbar(false)
-        },5000)
-    };
+    //         setOpenSnackbar(false)
+    //     },5000)
+    // };
 
    const finallyLogin = (sucess = true) => {
       
     if (sucess) {
       
-        messagerSnackBar('Adicionado com sucesso!')
+       // messagerSnackBar('Adicionado com sucesso!')
+       handleOpenSnackbar();
+      
         setTimeout(() => {
+          
+          handleCloseSnackbar();
             navigate('/')
-            setOpenSnackbar(false)
         },6000)
     }
     
     else {
   
-        messagerSnackBar('Algo deu errado!!')
+      //  messagerSnackBar('Algo deu errado!!')
        
     }
 
@@ -67,10 +80,12 @@ export const Register = () => {
 
       // Função para lidar com o envio do formulário
   const handleSubmit = async (values, { resetForm }) => {
+
+    console.log("Submitting with values:", values);
     try {
       
-      await axios.post(`${API_URL}/pacientes`, values)
-      console.log("Dados enviados:", values.nome);
+      await axios.post(`http://localhost:5000/api/pacientes`, values)
+      console.log("Dados enviados:", values.name);
     
 
       // Notificação de sucesso
@@ -90,15 +105,15 @@ export const Register = () => {
     return (
         <>
             <Formik
-        initialValues={{ nome: "", email: "", idade: "", telefone: "" }}
+        initialValues={{ name: "", mail: "", age: "", phone: "" }}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
          {({ errors, touched, isSubmitting }) => (
           <FormContainer as={Form}>
             <InputField
-              label="Nome"
-              name="nome"
+              label="Name"
+              name="name"
               type="text"
               placeholder={'Digite seu nome'}
               errors={errors}
@@ -106,22 +121,22 @@ export const Register = () => {
               icon={AccountBoxIcon}
             />
             <InputField
-              label="Email"
-              name="email"
+              label="Mail"
+              name="mail"
               type="email"
               errors={errors}
               touched={touched}
             />
             <InputField
-              label="Idade"
-              name="idade"
+              label="Age"
+              name="age"
               type="number"
               errors={errors}
               touched={touched}
             />
             <InputField
-              label="Telefone"
-              name="telefone"
+              label="Phone"
+              name="phone"
               type="text"
               errors={errors}
               touched={touched}
@@ -134,10 +149,11 @@ export const Register = () => {
       </Formik>
             
         {
-         // openSnackBar && 
+          openSnackBar && 
            <SnackBar
            open= {openSnackBar}
-            title= {openMessageSnackBar}
+          //  title= {openMessageSnackBar}
+          title={'usuario adicionado com sucesso!'}
              aria-live="assertive"
             />
         }
