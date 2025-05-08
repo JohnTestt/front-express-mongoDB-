@@ -13,11 +13,11 @@ import { FormContainer, SaveButton } from "./style/style";
 export const Register = () => {
 
     const navigate = useNavigate();
-   // const API_URL = import.meta.env.VITE_API_URL;
+    const API_URL = import.meta.env.VITE_API_URL;
 
 
     const [openSnackBar, setOpenSnackbar] = useState(false);
-    //const [openMessageSnackBar, setMessageSnackBar] = useState('');
+    const [openMessageSnackBar, setMessageSnackBar] = useState('');
 
     const handleOpenSnackbar = () => {
       setOpenSnackbar(true);
@@ -43,22 +43,22 @@ export const Register = () => {
             "O telefone deve estar no formato (XX) XXXXX-XXXX")
       });
 
-    // const messagerSnackBar = (message) => {
+    const messagerSnackBar = (message) => {
        
-    //     setOpenSnackbar(true)
-    //     setMessageSnackBar(message)
+        setOpenSnackbar(true)
+        setMessageSnackBar(message)
 
-    //     setTimeout(() => {
+        setTimeout(() => {
            
-    //         setOpenSnackbar(false)
-    //     },5000)
-    // };
+            setOpenSnackbar(false)
+        },5000)
+    };
 
    const finallyLogin = (sucess = true) => {
       
     if (sucess) {
       
-       // messagerSnackBar('Adicionado com sucesso!')
+       messagerSnackBar('Adicionado com sucesso!')
        handleOpenSnackbar();
       
         setTimeout(() => {
@@ -70,7 +70,7 @@ export const Register = () => {
     
     else {
   
-      //  messagerSnackBar('Algo deu errado!!')
+       messagerSnackBar('Algo deu errado!!')
        
     }
 
@@ -81,10 +81,9 @@ export const Register = () => {
       // Função para lidar com o envio do formulário
   const handleSubmit = async (values, { resetForm }) => {
 
-    console.log("Submitting with values:", values);
     try {
       
-      await axios.post(`http://localhost:5000/api/pacientes`, values)
+      await axios.post( `${API_URL}/pacientes`, values)
       console.log("Dados enviados:", values.name);
     
 
@@ -152,8 +151,8 @@ export const Register = () => {
           openSnackBar && 
            <SnackBar
            open= {openSnackBar}
-          //  title= {openMessageSnackBar}
-          title={'usuario adicionado com sucesso!'}
+           title= {openMessageSnackBar}
+        
              aria-live="assertive"
             />
         }

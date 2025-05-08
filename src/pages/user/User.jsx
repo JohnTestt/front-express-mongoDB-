@@ -15,7 +15,7 @@ export const User = () => {
     const [searchTerm, setSearchTerm] = useState('');
     
     
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
 
     const API_URL = import.meta.env.VITE_API_URL;
 
@@ -24,8 +24,8 @@ export const User = () => {
         const fetchUser = async () => {
           
             try{
-                //const response = await axios.get(`${API_URL}/pacientes`);
-               const response = await axios.get('http://localhost:5000/api/pacientes');
+                const response = await axios.get(`${API_URL}/pacientes`);
+              // const response = await axios.get('http://localhost:5000/api/pacientes');
                 setUser(response.data)
                
             }

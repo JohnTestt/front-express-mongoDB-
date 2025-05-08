@@ -19,17 +19,20 @@ export const Edit = () => {
   const [openMessageSnackBar, setMessageSnackBar] = useState("");
 
   // Esquema de validação com Yup
-  const validationSchema = Yup.object({
-    nome: Yup.string().required("O nome é obrigatório."),
-    email: Yup.string().email("E-mail inválido.").required("O e-mail é obrigatório."),
-    idade: Yup.number()
-      .required("A idade é obrigatória.")
-      .positive("A idade deve ser um número positivo.")
-      .integer("A idade deve ser um número inteiro."),
-    telefone: Yup.string()
-      .required("O telefone é obrigatório.")
-      .matches(/^\(\d{2}\)\s\d{4,5}-\d{4}$/, "Formato: (XX) XXXXX-XXXX"),
-  });
+    const validationSchema = Yup.object({
+        name: Yup.string().required("O nome é obrigatório."),
+        mail: Yup.string().email("E-mail inválido.").required("O e-mail é obrigatório."),
+        age: Yup.number()
+          .required("A idade é obrigatória.")
+          .positive("A idade deve ser um número positivo.")
+          .integer("A idade deve ser um número inteiro."),
+          phone: Yup.string()
+          .required("O telefone é obrigatório.")
+          .matches(
+            /^\(\d{2}\)\s\d{4,5}-\d{4}$/,
+            "O telefone deve estar no formato (XX) XXXXX-XXXX")
+      });
+
 
   // Buscar os dados do paciente pelo ID
   useEffect(() => {
@@ -92,31 +95,31 @@ export const Edit = () => {
         {({ errors, touched, isSubmitting }) => (
           <FormContainer as={Form}>
             <InputField
-              label="Nome"
-              name="nome"
+              label="Name"
+              name="name"
               type="text"
-              placeholder="Digite seu nome"
+              placeholder={'Digite seu nome'}
               errors={errors}
               touched={touched}
               icon={AccountBoxIcon}
             />
             <InputField
-              label="Email"
-              name="email"
+              label="Mail"
+              name="mail"
               type="email"
               errors={errors}
               touched={touched}
             />
             <InputField
-              label="Idade"
-              name="idade"
+              label="Age"
+              name="age"
               type="number"
               errors={errors}
               touched={touched}
             />
             <InputField
-              label="Telefone"
-              name="telefone"
+              label="Phone"
+              name="phone"
               type="text"
               errors={errors}
               touched={touched}
