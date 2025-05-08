@@ -102,8 +102,8 @@ export const User = () => {
                   <tbody>
                     {filterUsers.map((data) => (
                       <TableCard
-                        key={data.id}
-                        id={data.id}
+                        key={data._id}
+                        id={data._id}
                         nome={data.name}
                         email={data.mail}
                         idade={data.age}
