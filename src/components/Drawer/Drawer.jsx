@@ -21,12 +21,13 @@ export const Drawer = ({expanded, isMobileOpen, onClose}) => {
        
         <MenuContainer expanded = {expanded} isMobileOpen={isMobileOpen}>
 
-           {
+           {/* {
+           // criar um menu de perfil
             expanded &&  <div>
             <p>FOTO PERFIL</p>
-        </div>
+        </div> 
            }
-
+*/}
             <MenuItens onClick={() => navigate('/')}>
                 <ListIcon><HomeIcon/></ListIcon>
                 <ListText>Home</ListText>

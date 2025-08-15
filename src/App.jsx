@@ -1,4 +1,5 @@
 import { HashRouter as Router, Routes ,Route  } from "react-router-dom"
+import { Home } from "./pages/home/Home";
 import { User } from "./pages/user/User"
 import { Register } from "./pages/register/Register"
 import { Template } from "./partials/template/Template";
@@ -11,8 +12,8 @@ function App() {
     <>
        <Router>
         <Routes>
-          
-          <Route path="/" element= {<Template><User/></Template>}/>
+           <Route path="/" element= {<Template><Home/></Template>}/>
+          <Route path="/users" element= {<Template><User/></Template>}/>
           <Route path="/register" element= {<Register/>}/>
           <Route path="/edit/:id" element= {<Edit/>}/>
 

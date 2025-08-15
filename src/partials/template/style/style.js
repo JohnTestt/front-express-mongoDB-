@@ -24,7 +24,7 @@ font-size: 30px; /* Define o tamanho diretamente no SVG */
 
 @media (max-width: 768px) {
     position: sticky;
-   left: ${({ isExpanded }) => isExpanded ? "170px" : "0"};
+   left: ${({ isExpanded }) => isExpanded ? "30%" : "0"};
     top: 0;
   };
 

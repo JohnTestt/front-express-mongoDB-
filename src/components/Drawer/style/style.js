@@ -4,14 +4,14 @@ import styled from 'styled-components';
 
 export const MenuContainer= styled.section`
     
-    width: ${({ expanded }) => (expanded ? "220px" : "80px")};
+    width: ${({ IsExpanded }) => ( IsExpanded ? "220px" : "80px")};
     height: 100%;
     transition: transform 0.3s ease-in-out;
     left: 0;
     top: 0;
-    position: fixed;
+    position: fixed; 
     z-index: 9;
-   background-color: aliceblue;
+   background-color: #FFFFFF;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     overflow: hidden; // esconde components que 'vazem' do drawer
 
@@ -30,13 +30,14 @@ export const MenuItens= styled.div`
     padding: .3rem;
     border-radius: 5px;
     margin: 0 1.5rem;
-    
+    width: 100%;
+  
 
     &:hover {
   
     background-color: #f0f0f0;
     cursor: pointer;
-    
+  
   }
 
   &:nth-child(1) {
@@ -65,8 +66,7 @@ export const BoxMobile = styled.section`
   background-color: rgba(0, 0, 0, 0.5); /* Semitransparência */
   z-index: 8;
   display: ${({ open }) => (open ? 'block' : 'none')}; /* Só aparece se estiver aberto */
-  border: solid red 2px;
-
+ 
   @media (min-width: 769px) {
    
    display: none; 

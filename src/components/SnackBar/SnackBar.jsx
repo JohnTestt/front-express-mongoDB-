@@ -10,3 +10,4 @@ export const SnackBar = ({open, title}) => (
         </BoxItens>
     </ContainerBox>
 )
+

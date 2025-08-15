@@ -25,7 +25,6 @@ export const User = () => {
           
             try{
                 const response = await axios.get(`${API_URL}/pacientes`);
-              // const response = await axios.get('http://localhost:5000/api/pacientes');
                 setUser(response.data)
                
             }
@@ -54,7 +53,7 @@ export const User = () => {
       axios.delete(`${API_URL}/pacientes/${id}`)
 
       .then(() => {
-        const filtered = user.filter(users => users.id !== id);
+        const filtered = user.filter(users => users._id !== id);
        
         setUser(filtered);
       })
@@ -108,8 +107,8 @@ export const User = () => {
                         email={data.mail}
                         idade={data.age}
                         telefone={data.phone}
-                        onRemove = {()=> handleRemoveUser(data.id)}
-                        onEdit = {()=> handleEditUser(data.id)} // data.id
+                        onRemove = {()=> handleRemoveUser(data._id)}
+                        onEdit = {()=> handleEditUser(data._id)} 
                       />
                     ))}
                   </tbody>
