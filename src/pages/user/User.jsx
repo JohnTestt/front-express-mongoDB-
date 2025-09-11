@@ -26,6 +26,7 @@ export const User = () => {
             try{
                 const response = await axios.get(`${API_URL}/pacientes`);
                 setUser(response.data)
+                console.log( "pacientes encontrados:", response.data);
                
             }
             catch(error) {

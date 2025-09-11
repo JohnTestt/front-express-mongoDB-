@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 export const MenuContainer= styled.section`
     
-    width: ${({ IsExpanded }) => ( IsExpanded ? "220px" : "80px")};
+    width: ${({ expanded }) => ( expanded ? "220px" : "80px")};
     height: 100%;
     transition: transform 0.3s ease-in-out;
     left: 0;

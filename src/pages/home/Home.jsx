@@ -13,8 +13,9 @@ export const Home = () => {
                     <Itens>
                         <h2>👨‍💻 Descrição do Projeto:</h2>
                         <ul>
-                            <li>  Este projeto é um sistema completo  com integração completa entre frontend em React (Vite) e backend em Node.js (Express)</li>
-                            <li>Este projeto implementa um CRUD completo (Create, Read, Update, Delete) para gerenciamento de pacientes, integrando backend e frontend de maneira organizada e funcional.</li>
+                            <li> O projeto FRONT APP_DB é uma aplicação React + Vite que implementa um CRUD de pacientes, integrando com uma API RESTful em Node.js/Express.</li>
+                            <li> O backend utiliza MongoDB para armazenamento dos dados dos pacientes.</li>
+                            <li>A estrutura do projeto está organizada em componentes reutilizáveis, páginas e estilos com Styled-Components.</li>
                             <br></br>
                             <h2>✅ Estrutura organizada:</h2>
                             <h3> Backend - API RESTful com Node.js e Express </h3>
